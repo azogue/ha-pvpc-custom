@@ -1,0 +1,27 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "name": "Sensor Name",
+          "tariff": "Applicable tariff by geographic zone",
+          "power": "Contracted power (kW)",
+          "power_p3": "Contracted power for valley period P3 (kW)"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_service%]"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "power": "[%key:component::pvpc_hourly_pricing::config::step::user::data::power%]",
+          "power_p3": "[%key:component::pvpc_hourly_pricing::config::step::user::data::power_p3%]"
+        }
+      }
+    }
+  }
+}
