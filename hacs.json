@@ -1,7 +1,6 @@
 {
   "name": "Spain electricity hourly pricing (PVPC)",
   "content_in_root": false,
-  "domains": ["sensor"],
   "zip_release": false,
   "render_readme": true,
   "country": "ES",
