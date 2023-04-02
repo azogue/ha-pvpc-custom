@@ -4,6 +4,5 @@
   "zip_release": false,
   "render_readme": true,
   "country": "ES",
-  "homeassistant": "2023.3.0",
-  "version": "1.0.0"
+  "homeassistant": "2023.3.0"
 }
