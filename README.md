@@ -7,7 +7,12 @@ to be able to apply changes **quicker** than the normal release flow for HA Core
 
 ### HACS _(preferred method)_
 
-**Add the integration in [HACS](https://hacs.xyz/)** and start using it without any HA restart :)
+**Add the integration in [HACS](https://hacs.xyz/)** by adding a custom repository:
+
+```
+Repository: "https://github.com/azogue/ha-pvpc-custom"
+Category: "Integration"
+```
 
 ### Manual install
 
