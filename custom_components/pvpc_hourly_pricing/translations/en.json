@@ -10,7 +10,8 @@
     "step": {
       "api_token": {
         "data": {
-          "api_token": "API Token"
+          "api_token": "API Token",
+          "use_api_token": "Enable ESIOS API token for extra sensors"
         },
         "description": "To use the extended API you must request a personal token by mailing to {mail_to_link}.",
         "title": "ESIOS API token"
@@ -19,7 +20,7 @@
         "data": {
           "api_token": "API Token",
           "description": "Re-authenticate with a valid token or disable it",
-          "use_api_token": "Enable ESIOS Personal API token for private access"
+          "use_api_token": "Enable ESIOS API token for extra sensors"
         }
       },
       "user": {
@@ -28,7 +29,7 @@
           "power": "Contracted power (kW)",
           "power_p3": "Contracted power for valley period P3 (kW)",
           "tariff": "Applicable tariff by geographic zone",
-          "use_api_token": "Enable ESIOS Personal API token for private access"
+          "use_api_token": "Enable ESIOS API token for extra sensors"
         }
       }
     }
@@ -46,7 +47,7 @@
         "data": {
           "power": "Contracted power (kW)",
           "power_p3": "Contracted power for valley period P3 (kW)",
-          "use_api_token": "Enable ESIOS Personal API token for private access"
+          "use_api_token": "Enable ESIOS API token for extra sensors"
         }
       }
     }
