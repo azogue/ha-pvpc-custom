@@ -1,6 +1,6 @@
 # Changelog
 
-## [v1.0.0](https://github.com/azogue/ha-pvpc-custom/tree/v1.0.0)
+## [v1.0.0](https://github.com/azogue/ha-pvpc-custom/tree/v1.0.0) ✨ API Token support + extra price sensors (2023-04-02)
 
 Mirror of [official HA-Core integration 'pvpc_hourly_pricing'](https://www.home-assistant.io/integrations/pvpc_hourly_pricing), with proposed changes to
 
