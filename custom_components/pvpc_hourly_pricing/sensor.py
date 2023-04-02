@@ -6,7 +6,7 @@ from datetime import datetime
 import logging
 from typing import Any
 
-from aiopvpc.const import KEY_INJECTION, KEY_PVPC
+from aiopvpc.const import KEY_INJECTION, KEY_MAG, KEY_OMIE, KEY_PVPC
 from aiopvpc.ha_helpers import make_sensor_unique_id
 
 from homeassistant.components.sensor import (
@@ -35,28 +35,34 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
         icon="mdi:currency-eur",
         native_unit_of_measurement=f"{CURRENCY_EURO}/{UnitOfEnergy.KILO_WATT_HOUR}",
         state_class=SensorStateClass.MEASUREMENT,
+        suggested_display_precision=5,
     ),
     SensorEntityDescription(
         key=KEY_INJECTION,
-        icon="mdi:currency-eur",
+        icon="mdi:transmission-tower-export",
         native_unit_of_measurement=f"{CURRENCY_EURO}/{UnitOfEnergy.KILO_WATT_HOUR}",
         state_class=SensorStateClass.MEASUREMENT,
+        suggested_display_precision=5,
         name="Injection Price",
     ),
-    # SensorEntityDescription(
-    #     key=KEY_MAG,
-    #     icon="mdi:currency-eur",
-    #     native_unit_of_measurement=f"{CURRENCY_EURO}/{UnitOfEnergy.KILO_WATT_HOUR}",
-    #     state_class=SensorStateClass.MEASUREMENT,
-    #     name="MAG tax",
-    # ),
-    # SensorEntityDescription(
-    #     key=KEY_OMIE,
-    #     icon="mdi:currency-eur",
-    #     native_unit_of_measurement=f"{CURRENCY_EURO}/{UnitOfEnergy.KILO_WATT_HOUR}",
-    #     state_class=SensorStateClass.MEASUREMENT,
-    #     name="OMIE Price",
-    # ),
+    SensorEntityDescription(
+        key=KEY_MAG,
+        icon="mdi:bank-transfer",
+        native_unit_of_measurement=f"{CURRENCY_EURO}/{UnitOfEnergy.KILO_WATT_HOUR}",
+        state_class=SensorStateClass.MEASUREMENT,
+        suggested_display_precision=5,
+        name="MAG tax",
+        entity_registry_enabled_default=False,
+    ),
+    SensorEntityDescription(
+        key=KEY_OMIE,
+        icon="mdi:shopping",
+        native_unit_of_measurement=f"{CURRENCY_EURO}/{UnitOfEnergy.KILO_WATT_HOUR}",
+        state_class=SensorStateClass.MEASUREMENT,
+        suggested_display_precision=5,
+        name="OMIE Price",
+        entity_registry_enabled_default=False,
+    ),
 )
 _PRICE_SENSOR_ATTRIBUTES_MAP = {
     "data_id": "data_id",
