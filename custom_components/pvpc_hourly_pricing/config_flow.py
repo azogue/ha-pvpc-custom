@@ -209,7 +209,7 @@ class PVPCOptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
                     ATTR_POWER_P3: self._power_p3,
                     CONF_USE_API_TOKEN: False,
                     CONF_API_TOKEN: self.config_entry.data.get(CONF_API_TOKEN, ""),
-                }
+                },
             )
 
         # Fill options with entry data
