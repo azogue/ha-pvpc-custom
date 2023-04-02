@@ -7,13 +7,14 @@
           "tariff": "Applicable tariff by geographic zone",
           "power": "Contracted power (kW)",
           "power_p3": "Contracted power for valley period P3 (kW)",
-          "use_api_token": "Enable ESIOS Personal API token for private access"
+          "use_api_token": "Enable ESIOS API token for extra sensors"
         }
       },
       "api_token": {
         "title": "ESIOS API token",
         "description": "To use the extended API you must request a personal token by mailing to {mail_to_link}.",
         "data": {
+          "use_api_token": "[%key:component::pvpc_hourly_pricing::config::step::user::data::use_api_token%]",
           "api_token": "[%key:common::config_flow::data::api_token%]"
         }
       },

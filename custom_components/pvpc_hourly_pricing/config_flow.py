@@ -53,6 +53,14 @@ class TariffSelectorConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         """Get the options flow for this handler."""
         return PVPCOptionsFlowHandler(config_entry)
 
+    def _make_token_schema(self) -> vol.Schema:
+        return vol.Schema(
+            {
+                vol.Required(CONF_USE_API_TOKEN, default=self._use_api_token): bool,
+                vol.Optional(CONF_API_TOKEN, default=self._api_token): str,
+            }
+        )
+
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
     ) -> FlowResult:
@@ -72,9 +80,7 @@ class TariffSelectorConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             self._use_api_token = user_input[CONF_USE_API_TOKEN]
             return self.async_show_form(
                 step_id="api_token",
-                data_schema=vol.Schema(
-                    {vol.Required(CONF_API_TOKEN, default=self._api_token): str}
-                ),
+                data_schema=self._make_token_schema(),
                 description_placeholders={"mail_to_link": _MAIL_TO_LINK},
             )
 
@@ -92,14 +98,10 @@ class TariffSelectorConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_step_api_token(self, user_input: dict[str, Any]) -> FlowResult:
         """Handle optional step to define API token for extra sensors."""
         self._api_token = user_input[CONF_API_TOKEN]
-        return await self._async_verify(
-            "api_token",
-            data_schema=vol.Schema(
-                {vol.Required(CONF_API_TOKEN, default=self._api_token): str}
-            ),
-        )
+        self._use_api_token = user_input[CONF_USE_API_TOKEN]
+        return await self._async_verify("api_token")
 
-    async def _async_verify(self, step_id: str, data_schema: vol.Schema) -> FlowResult:
+    async def _async_verify(self, step_id: str) -> FlowResult:
         """Attempt to verify the provided configuration."""
         data = {
             CONF_NAME: self._name,
@@ -118,10 +120,7 @@ class TariffSelectorConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         if not auth_ok:
             errors["base"] = "invalid_auth"
             return self.async_show_form(
-                step_id=step_id,
-                data_schema=data_schema,
-                errors=errors,
-                description_placeholders={"mail_to_link": _MAIL_TO_LINK},
+                step_id=step_id, data_schema=self._make_token_schema(), errors=errors
             )
 
         if self._reauth_entry:
@@ -151,17 +150,14 @@ class TariffSelectorConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         self, user_input: dict[str, Any] | None = None
     ) -> FlowResult:
         """Confirm reauth dialog."""
-        data_schema = vol.Schema(
-            {
-                vol.Required(CONF_USE_API_TOKEN, default=self._use_api_token): bool,
-                vol.Optional(CONF_API_TOKEN, default=self._api_token): str,
-            }
-        )
         if user_input:
             self._api_token = user_input[CONF_API_TOKEN]
             self._use_api_token = user_input[CONF_USE_API_TOKEN]
-            return await self._async_verify("reauth_confirm", data_schema)
-        return self.async_show_form(step_id="reauth_confirm", data_schema=data_schema)
+            return await self._async_verify("reauth_confirm")
+
+        return self.async_show_form(
+            step_id="reauth_confirm", data_schema=self._make_token_schema()
+        )
 
 
 class PVPCOptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
@@ -187,7 +183,7 @@ class PVPCOptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
 
         # Fill options with entry data
         api_token = self.options.get(
-            CONF_API_TOKEN, self.config_entry.data.get(CONF_API_TOKEN)
+            CONF_API_TOKEN, self.config_entry.data.get(CONF_API_TOKEN, "")
         )
         return self.async_show_form(
             step_id="api_token",
@@ -202,11 +198,19 @@ class PVPCOptionsFlowHandler(config_entries.OptionsFlowWithConfigEntry):
     ) -> FlowResult:
         """Manage the options."""
         if user_input is not None:
+            self._power = user_input[ATTR_POWER]
+            self._power_p3 = user_input[ATTR_POWER_P3]
             if user_input[CONF_USE_API_TOKEN]:
-                self._power = user_input[ATTR_POWER]
-                self._power_p3 = user_input[ATTR_POWER_P3]
                 return await self.async_step_api_token(user_input)
-            return self.async_create_entry(title="", data=user_input)
+            return self.async_create_entry(
+                title="",
+                data={
+                    ATTR_POWER: self._power,
+                    ATTR_POWER_P3: self._power_p3,
+                    CONF_USE_API_TOKEN: False,
+                    CONF_API_TOKEN: self.config_entry.data.get(CONF_API_TOKEN, ""),
+                }
+            )
 
         # Fill options with entry data
         power = self.options.get(ATTR_POWER, self.config_entry.data[ATTR_POWER])
