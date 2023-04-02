@@ -1,10 +1,10 @@
 {
-  "name": "Event sensor",
+  "name": "Spain electricity hourly pricing (PVPC)",
   "content_in_root": false,
   "domains": ["sensor"],
   "zip_release": false,
-  "homeassistant": "2022.12.0",
-  "iot_class": "Local Push",
   "render_readme": true,
+  "country": "ES",
+  "homeassistant": "2023.3.0",
   "version": "1.0.0"
 }
