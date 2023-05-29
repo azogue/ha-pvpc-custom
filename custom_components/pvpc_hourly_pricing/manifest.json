@@ -4,10 +4,11 @@
   "codeowners": ["@azogue"],
   "config_flow": true,
   "documentation": "https://github.com/azogue/ha-pvpc-custom",
+  "integration_type": "service",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/azogue/ha-pvpc-custom/issues",
   "loggers": ["aiopvpc"],
   "quality_scale": "platinum",
-  "requirements": ["aiopvpc==4.1.0"],
-  "version": "1.0.0"
+  "requirements": ["aiopvpc==4.2.1"],
+  "version": "1.1.0"
 }

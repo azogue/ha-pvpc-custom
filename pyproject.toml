@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ha-pvpc-custom"
-version = "1.0.0"
+version = "1.1.0"
 description = "HomeAssistant custom integration for Spain electricity hourly pricing (PVPC)"
 authors = ["Eugenio Panadero <eugenio.panadero@gmail.com>"]
 license = "MIT"
@@ -10,7 +10,7 @@ repository = "https://github.com/azogue/ha-pvpc-custom"
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
 homeassistant = ">=2023.3.0"
-aiopvpc = ">=4.1.0"
+aiopvpc = ">=4.2.1"
 
 [tool.poetry.dev-dependencies]
 pre-commit = ">=2.2.0"
