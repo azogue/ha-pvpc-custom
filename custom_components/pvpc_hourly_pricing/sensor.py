@@ -18,7 +18,12 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_NAME, CURRENCY_EURO, UnitOfEnergy
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.device_registry import DeviceEntryType
-from homeassistant.helpers.entity import DeviceInfo
+
+try:
+    from homeassistant.helpers.entity import DeviceInfo
+except ImportError:  # after ha-core#98149
+    from homeassistant.helpers.device_registry import DeviceInfo
+
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.event import async_track_time_change
 from homeassistant.helpers.typing import StateType
