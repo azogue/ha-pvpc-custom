@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.1.1](https://github.com/azogue/ha-pvpc-custom/tree/v1.1.1) 📦️ (MAINTENANCE) Fix import of `DeviceInfo` after HA v2023.9.0 (2023-08-19)
+
+- 🐛 Fix future `ImportError` for `DeviceInfo` migrating to 'device_registry', scheduled for next HA-Core version 2023.9
+- 📦️ Upgrade required Python to 3.11 and enable usage with 3.12, syncing with HA-Core reqs
+- 🎨 pre-commit autoupdate
+
 ## [v1.1.0](https://github.com/azogue/ha-pvpc-custom/tree/v1.1.0) 🐛 Fixes for new extra price sensors (2023-05-29)
 
 - 🐛 Fix all integration sensors going unavailable when any sensor lacks data for the current day (usually the 'OMIE price')
