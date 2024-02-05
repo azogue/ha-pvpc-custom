@@ -1,4 +1,5 @@
 """Constant values for pvpc_hourly_pricing."""
+
 from aiopvpc import TARIFFS
 import voluptuous as vol
 
