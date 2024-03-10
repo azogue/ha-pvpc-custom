@@ -7,7 +7,14 @@ from datetime import datetime
 import logging
 from typing import Any
 
-from aiopvpc.const import KEY_INJECTION, KEY_MAG, KEY_OMIE, KEY_PVPC
+from aiopvpc.const import (
+    KEY_ADJUSTMENT,
+    KEY_INDEXED,
+    KEY_INJECTION,
+    KEY_MAG,
+    KEY_OMIE,
+    KEY_PVPC,
+)
 from aiopvpc.ha_helpers import make_sensor_unique_id
 
 from homeassistant.components.sensor import (
@@ -42,6 +49,24 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
         native_unit_of_measurement=f"{CURRENCY_EURO}/{UnitOfEnergy.KILO_WATT_HOUR}",
         state_class=SensorStateClass.MEASUREMENT,
         suggested_display_precision=5,
+    ),
+    SensorEntityDescription(
+        key=KEY_ADJUSTMENT,
+        icon="mdi:shopping",
+        native_unit_of_measurement=f"{CURRENCY_EURO}/{UnitOfEnergy.KILO_WATT_HOUR}",
+        state_class=SensorStateClass.MEASUREMENT,
+        suggested_display_precision=5,
+        name="Market adjustment",
+        entity_registry_enabled_default=False,
+    ),
+    SensorEntityDescription(
+        key=KEY_INDEXED,
+        icon="mdi:currency-eur",
+        native_unit_of_measurement=f"{CURRENCY_EURO}/{UnitOfEnergy.KILO_WATT_HOUR}",
+        state_class=SensorStateClass.MEASUREMENT,
+        suggested_display_precision=5,
+        name="Indexed price",
+        entity_registry_enabled_default=False,
     ),
     SensorEntityDescription(
         key=KEY_INJECTION,
