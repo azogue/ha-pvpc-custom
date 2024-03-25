@@ -155,13 +155,13 @@ files = [
 
 [[package]]
 name = "aiopvpc"
-version = "4.3.0"
+version = "4.3.1"
 description = "Retrieval of Spanish Electricity hourly prices (PVPC)"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "aiopvpc-4.3.0-py3-none-any.whl", hash = "sha256:3fe5abb3599cf414f021c78eff78f6609f8b1f8012b12571c97524553bb3ec80"},
-    {file = "aiopvpc-4.3.0.tar.gz", hash = "sha256:5bdc2afaa881bfd9b72d2c091a5379753ecbe4d7062dd2a739df2026dace9402"},
+    {file = "aiopvpc-4.3.1-py3-none-any.whl", hash = "sha256:65468e5b526c941ec381589d6594daf1b3af407ad36a74f5e64a0cd763529e87"},
+    {file = "aiopvpc-4.3.1.tar.gz", hash = "sha256:b6e8f4ad03ca8a3fb2cf77e00f26549185ea9e87b491d573c1f44d603d63d1d1"},
 ]
 
 [package.dependencies]
@@ -2299,4 +2299,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "1a19abe472ffa9d4605cc1016dc234b9c46a6d2ff26c47d96b53aa75aefda297"
+content-hash = "9c564f1fe4ba3b9112f9581b56eb6c016815b9eba7e95e6880e68c84f0797ddf"
