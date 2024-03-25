@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2.1](https://github.com/azogue/ha-pvpc-custom/tree/v1.2.1) 🐛 Fix unsorted prices in new composed sensor 'INDEXED' (2024-03-25)
+
+- 🐛 Update to `aiopvpc>=4.3.1` to fix order of prices for new INDEXED composed sensor (azogue/aiopvpc#72)
+
 ## [v1.2.0](https://github.com/azogue/ha-pvpc-custom/tree/v1.2.0) ✨ Add new sensors for market adjustment and indexed tariff (2024-03-10)
 
 - ✨ Add new price sensors: **Market adjustment** (from ESIOS API indicator 2108), and **Indexed tariff** (as _composed_ price sensor calculated as `PVPC - ADJUSTMENT`), from first-time contributor @MiguelAngelLV in #18 (and azogue/aiopvpc#69) 🍻
