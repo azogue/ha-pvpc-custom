@@ -1,0 +1,55 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "El servei ja est\u00e0 configurat",
+      "reauth_successful": "La reautenticaci\u00f3 \u00e9s v\u00e0lida"
+    },
+    "error": {
+      "invalid_auth": "La autentaci\u00f3 no ès v\u00e0lida"
+    },
+    "step": {
+      "api_token": {
+        "data": {
+          "api_token": "Token API",
+          "use_api_token": "Activa el token API ESIOS per a sensors addicionals"
+        },
+        "description": "Per a usar l'API ampliada heu de sol\u00b7licitar un token per correu a {mail_to_link}.",
+        "title": "Token API ESIOS API"
+      },
+      "reauth_confirm": {
+        "data": {
+          "api_token": "Token API",
+          "description": "Torneu a autenticar-vos amb un token v\u00e0lid o desactiveu-ho",
+          "use_api_token": "Activa el token API ESIOS per a sensors addcionals"
+        }
+      },
+      "user": {
+        "data": {
+          "name": "Nom del sensor",
+          "power": "Pot\u00e8ncia contractada (kW)",
+          "power_p3": "Pot\u00e8ncia contractada per al per\u00edode vall P3 (kW)",
+          "tariff": "Tarifa aplicable segons zona geogrfica",
+          "use_api_token": "Activa el token API ESIOS per a sensors addicionals"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "api_token": {
+        "data": {
+          "api_token": "Token API"
+        },
+        "description": "Per a usar l'API ampliada heu de sol\u00b7licitar un token personal per correu a {mail_to_link}.",
+        "title": "Token API ESIOS"
+      },
+      "init": {
+        "data": {
+          "power": "Pot\u00e8ncia contractada (kW)",
+          "power_p3": "Pot\u00e8ncia contractada per al per\u00edode vall P3 (kW)",
+          "use_api_token": "Activa el token API ESIOS per a sensor addicionals"
+        }
+      }
+    }
+  }
+}
